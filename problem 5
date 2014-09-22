@@ -1,0 +1,60 @@
+using System;
+using System.Diagnostics;
+
+
+namespace Algo1
+{
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+
+            Stopwatch stopwatch = Stopwatch.StartNew(); 
+            stopwatch.Start();
+            //read the number 
+            int maxnum = Convert.ToInt32(Console.ReadLine());
+            
+            int num = 2;
+            
+          // increase by 2 because no even number can come out from dividing odd and even number and our required number must be divided evenly
+           
+            for (int i = num; i <= int.MaxValue; i += 2)
+            {
+
+                if (GetNum(i, maxnum) != 0)
+                {
+                    num = i;
+                    break;
+                }
+
+            }
+             stopwatch.Stop();
+            Console.WriteLine("The Number : " + num);
+            Console.WriteLine("Time in Milliseconds : "+stopwatch.ElapsedMilliseconds);
+            Console.ReadKey();
+        }
+
+        public static int GetNum(int num, int maxnum)
+        {
+           // starting loop from to because any number divided on it well by the same number 
+            for (var i = 2; i <= maxnum; i++)
+            {
+           // out of the loop if we find that number can't be divided evenly on any number from our rang 
+                if (num % i != 0)
+                {
+
+                    return 0;
+
+                }
+                if (i == maxnum)
+                {
+                    return num;
+                }
+            }
+            return 0;
+        }
+
+
+  
+    } 
+}
